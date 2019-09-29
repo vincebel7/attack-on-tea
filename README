@@ -1,0 +1,34 @@
+# Attack on Tiny Encryption Algorithm (TEA)
+# by Vince Belanger
+# CPS 472 - Computer & Network Security
+# Assignment 1
+# February 12, 2019
+# University of Dayton - Dr. Yao
+
+The assignment contains four files, although only two are required to run.
+
+encrypt.py - Generates 100 lines of random 64-bit 1-5 digit plaintexts, with
+their corresponding TEA-encrypted ciphertexts. Writes to a file called
+message-pairs and will create the file if no such file exists. When run, the
+program will take your input for K0 and K1 of the key.
+
+attack.py - Reads inputs in the format of two blocks of plaintext separated
+by a space, then two blocks of corresponding ciphertext separated by space.
+The plaintext and ciphertext are separated by a tab. Each line is expected
+to be one pair of plaintext/ciphertext. The program reads in the lines to a
+list, then it takes the first line and guesses a K0 value. It calculates the
+K1 value based on that, then tests other plaintext/ciphertext pairs to see
+if the K1 values match up. If they match up after 12 consecutive successes,
+the K0 and K1 values are deemed to be the correct key values! If not, K0
+increments until the correct values are found.
+
+specified_encrypt.py - A variant of encrypt.py, it performs TEA encryption
+on hard-coded plaintext and key values. I used this for testing purposes.
+
+message-pairs - A file of plaintexts and ciphertexts, containing the values
+I most recently generated using encrypt.py before submitting
+
+To run the program, make sure encrypt.py and attack.py are in the same
+directory. Then, run encrypt.py just like you would any other Python file,
+in order to generate a new message-pairs file. The program will take your
+input for K0 and K1 of the key. Then run attack.py and watch the magic.
